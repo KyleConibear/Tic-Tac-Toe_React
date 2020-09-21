@@ -22,6 +22,7 @@ class Board extends React.Component {
     super(props);
     this.state = {
       squares: Array(9).fill(null),
+      xIsNext: true,
     };
   }
 
@@ -29,8 +30,11 @@ class Board extends React.Component {
     /* The slice() method returns the selected elements in an array, as a new array object.
     The original array will not be changed. */
     const squares = this.state.squares.slice();
-    squares[index] = 'X';
-    this.setState({ squares: squares });
+    squares[index] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({ 
+      squares: squares,
+      xIsNext: !this.state.xIsNext,    
+    });
   }
 
   renderSquare(index) {
@@ -42,7 +46,7 @@ class Board extends React.Component {
   }
 
   render() {
-    const status = 'Next player: X';
+    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
       <div>
