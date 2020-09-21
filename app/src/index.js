@@ -4,15 +4,6 @@ import './index.css';
 
 
 class Square extends React.Component {
-  constructor(props) {
-    //? I think super(props) is depreciated
-    super(props); //? Super is the parent class
-    // this.state is used to store variables
-    this.state = {
-      value: null,
-    };
-  }
-
   render() {
     return (
       // "function" would fire the alert every time the component re-renders.
@@ -20,17 +11,36 @@ class Square extends React.Component {
 
       // "() =>" React will only call this function after a click.
       <button className="square"
-      // When you call "setState" in a component, React automatically updates the child components inside of it too.
-        onClick={() => this.setState({ value: 'X' })}>
-        { this.state.value}
+        // When you call "setState" in a component, React automatically updates the child components inside of it too.
+        onClick={() => this.props.onClick({ value: 'X' })}>
+        { this.props.value}
       </button >
     );
   }
 }
 
 class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+    };
+  }
+
+  handleClick(index) {
+    /* The slice() method returns the selected elements in an array, as a new array object.
+    The original array will not be changed. */
+    const squares = this.state.squares.slice();
+    squares[index] = 'X';
+    this.setState({ squares: squares });
+  }
+
   renderSquare(index) {
-    return <Square value={index} />;
+    return (
+      <Square
+        value={this.state.squares[index]}
+        onClick={() => this.handleClick(index)}
+      />);
   }
 
   render() {
