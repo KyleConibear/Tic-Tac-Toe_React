@@ -36,6 +36,13 @@ ol, ul {
   outline: none;
 }
 
+table {
+  border: 1px solid black;
+  table-layout: fixed;
+  width: 60px;
+  height: 60px;
+}
+
 .kbd-navigation .square:focus {
   background: #ddd;
 }

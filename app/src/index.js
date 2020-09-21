@@ -91,7 +91,25 @@ class Game extends React.Component {
 
     const moves = history.map((step, move) => {
       const desc = move?
-      'Go to move #' + move :
+      <div>{this.state.stepNumber === move ? <b>Active move: {move}</b> : 'Go to move: ' + move} 
+        <table>
+          <tr>
+            <th>{history[move].squares[0]}</th>
+            <th>{history[move].squares[1]}</th>
+            <th>{history[move].squares[2]}</th>
+          </tr>
+          <tr>
+            <th>{history[move].squares[3]}</th>
+            <th>{history[move].squares[4]}</th>
+            <th>{history[move].squares[5]}</th>
+          </tr>
+          <tr>
+            <th>{history[move].squares[6]}</th>
+            <th>{history[move].squares[7]}</th>
+            <th>{history[move].squares[8]}</th>
+          </tr>
+        </table>      
+      </div> :
       'Go to game start';
       return(
         <li key={move}>
