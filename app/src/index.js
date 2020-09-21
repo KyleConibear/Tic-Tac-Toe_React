@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-
-class Square extends React.Component {
-  render() {
+// This is a "controlled components" because the "Board" Component as the parent has ownership of its state
+function Square(props) {
     return (
       // "function" would fire the alert every time the component re-renders.
       // <button className="square" onClick={function () { alert('click'); }}>
@@ -16,7 +15,6 @@ class Square extends React.Component {
         { this.props.value}
       </button >
     );
-  }
 }
 
 class Board extends React.Component {
