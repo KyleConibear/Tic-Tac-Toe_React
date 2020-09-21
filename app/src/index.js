@@ -4,17 +4,17 @@ import './index.css';
 
 // This is a "controlled components" because the "Board" Component as the parent has ownership of its state
 function Square(props) {
-    return (
-      // "function" would fire the alert every time the component re-renders.
-      // <button className="square" onClick={function () { alert('click'); }}>
+  return (
+    // "function" would fire the alert every time the component re-renders.
+    // <button className="square" onClick={function () { alert('click'); }}>
 
-      // "() =>" React will only call this function after a click.
-      <button className="square"
-        // When you call "setState" in a component, React automatically updates the child components inside of it too.
-        onClick={() => this.props.onClick({ value: 'X' })}>
-        { this.props.value}
-      </button >
-    );
+    // "() =>" React will only call this function after a click.
+    <button className="square"
+      // When you call "setState" in a component, React automatically updates the child components inside of it too.
+      onClick={props.onClick}>
+      {props.value}
+    </button >
+  );
 }
 
 class Board extends React.Component {
